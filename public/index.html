@@ -1,13 +1,21 @@
+
+
 <html>
     <head>
-        <title>Botkit Anywhere</title>
+        <title>Jocko Anywhere</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.4/dist/showdown.min.js"></script>
+        <input type="text" id="counter" value="1">
         <link rel="stylesheet" href="/css/styles.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
     </head>
     <body >
+      
       <div class="wrapper">
+        
+        <image src='this.jpg' alt='Avatar' id = 'profile' style="float:left">
 
         <div id="message_window">
             <div class="disconnected">
@@ -16,13 +24,37 @@
             <div class="offline">
                 Offline! Reload to reconnect.
             </div>
-            <div class="powered_by">
-              Powered by <a href="https://botkit.ai" target="_blank" title="Building Blocks for Building Bots"><img src="/botkit_icon.png" width="15" height="15" alt="Botkit Logo" /> Botkit</a>
-            </div>
+            
             <section>
+              <!-- <div id="mb_ad"></div> -->
                 <div id="message_list">
+                  
+                  
+                  
                     <div id="message_template">
+                      <img src='white.png' id = 'test'>
+                      <!-- <script type="text/javascript" src="mb.js"></script> -->
+
+                      
+                      
+
                         <div class="message {{message.type}}">
+                          
+
+                          <script>
+                          
+                            // var counterFull = document.getElementById("counter").value;
+                            // console.log(counterFull);
+                            // var counterLast = counterFull.charAt(counterFull.length-1);
+                            // console.log(counterLast);
+                        //     if(counterLast == '1'){
+                        //     var myobj = document.getElementById("profile");
+                        //     myobj.remove();
+                        //     }else{
+                        //   console.log("ok")
+                        // }
+                          </script>
+
                             {{#if message.isTyping}}
                               <div class="typing-indicator">
                                 <span></span>
@@ -35,7 +67,9 @@
                             {{#if message.open_link}}
                               <a href="{{{message.open_link}}}" target="_blank" class="button_message">{{#if message.link_title}}{{message.link_title}}{{else}}{{message.open_link}}{{/if}}</a>
                             {{/if}}
+                            
                         </div>
+                      <!-- </div>
                         {{#message.files}}
                           <div class="file_attachment">
                           {{#if image}}
@@ -45,19 +79,37 @@
                           {{/if}}
                           </div>
                         {{/message.files}}
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <div id="message_replies">
+              
             </div>
             <footer>
                 <form onsubmit="Botkit.send(Botkit.input.value, event)">
                     <input type="text" autocomplete="off" id="messenger_input" placeholder="Type here..." />
-                    <button type="submit">Send</button>
+                    <button id="button" type="submit" onclick="myFunction();">Send</button>
+                    <script>
+                      function myFunction(){
+                        // document.getElementById('mb_ad').innerHTML = document.write("<img src='this.jpg' id = 'profile'>");
+                          };
+                          // var counterFull = document.getElementById("counter").value;
+                          // var counterLast = counterFull.charAt(counterFull.length-1);
+                          // if (counterLast == 1){
+                          //   $('#counter').val($('#counter').val() + '0'); 
+                          // }else{
+                          //   $('#counter').val($('#counter').val() + '1');
+                          // }
+                       
+                      </script>
                 </form>
             </footer>
+            
         </div>
+        
         </div>
         <script src="/client.js"></script>
+        
     </body>
+    
 </html>

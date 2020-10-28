@@ -1,0 +1,1 @@
+document.write("<img src='this.jpg' alt='Avatar' id = 'profile'>");

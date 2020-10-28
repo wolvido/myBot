@@ -70,11 +70,14 @@ var Botkit = {
         }
         var message = {
             type: 'outgoing',
-            text: text
+            text: text,
         };
 
         this.clearReplies();
         that.renderMessage(message);
+        
+        
+        // that.renderProfile();
 
         that.deliverMessage({
             type: 'message',
@@ -82,7 +85,7 @@ var Botkit = {
             user: this.guid,
             channel: this.options.use_sockets ? 'websocket' : 'webhook'
         });
-
+        
         this.input.value = '';
 
         this.trigger('sent', message);
@@ -237,6 +240,7 @@ var Botkit = {
     focus: function () {
         this.input.focus();
     },
+
     renderMessage: function (message) {
         var that = this;
         if (!that.next_line) {
@@ -254,6 +258,15 @@ var Botkit = {
             delete (that.next_line);
         }
     },
+
+    renderProfile: function () {
+        var img = document.createElement('img'); 
+        img.src = 'this.jpg'; 
+        document.getElementById('body').appendChild(img); 
+        down.innerHTML = "Image Element Added."; 
+
+    },
+
     triggerScript: function (script, thread) {
         this.deliverMessage({
             type: 'trigger',

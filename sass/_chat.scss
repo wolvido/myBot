@@ -155,7 +155,7 @@ $human_message_text: white;
   }
 
   .message.outgoing {
-      float: right;
+      float: left;
 
       background: $human_message_background;
       color: $human_message_text;
