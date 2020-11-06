@@ -56,7 +56,16 @@ for(i=0; i<10; i++) {
     array2.push( '0' + i + ":" + 0 +j );
   }
 }
-var hourMinutes = array.concat(array2)
+var array3 = [], i, j;
+for(i=0; i<24; i++) {
+  for(j=0; j<10; j++) {
+    array3.push( i + ":" + 0  +j );
+  }
+}
+
+var initial = array.concat(array2);
+var hourMinutes = array3.concat(initial);
+
 //
 
 
@@ -76,12 +85,25 @@ function timeOutAlarm(deadline){
     let currentTime = (currentMinutes*60)*1000;
     console.log("current time converted total: "+ currentTime)
 
-    if (str.charAt(0) == '0' ) {
+    if (str.charAt(1) == '0' ) {
         var hourStr = str.substring(0,2);
         var minuteStr = str.substring(3,5);
-      }else{
+      }
+  else if (str.charAt(0) == '0' ) {
+        var hourStr = str.substring(1,2);
+        var minuteStr = str.substring(3,5);
+      }
+  else if (str.charAt(1) == ':' ) {
         var hourStr = str.substring(0,1);
-        var minuteStr = str.substring(2,5);
+        var minuteStr = str.substring(2,6);
+      }
+  else if (str.charAt(3) == '0' && str.charAt(2) == ':' ) {
+        var hourStr = str.substring(0,2);
+        var minuteStr = str.substring(4,5);
+      }
+  else{
+        var hourStr = str.substring(0,2);
+        var minuteStr = str.substring(3,5);
       }
     
     console.log("hour input: "+hourStr);
@@ -153,7 +175,7 @@ alarmConvo.say('using 24-hour format, what time would you like to start?');
 controller.ready(() => {
 
     controller.addDialog(alarmConvo);
-    controller.hears(['Schedule a task','schedule','Schedule a task for today'], ['message'], async(bot, message) => {
+    controller.hears(['Schedule a task','schedule','Schedule a task for today', 'I have a task for today'], ['message'], async(bot, message) => {
         await bot.beginDialog(ALARM_DIALOG);
     });
 

@@ -14,8 +14,10 @@
     <body >
       
       <div class="wrapper">
-        
-        <image src='this.jpg' alt='Avatar' id = 'profile' style="float:left">
+        <script>
+            document.write("<image src='this.png' alt='Avatar' id = 'profile' style='float:left'>");  
+        </script>
+    
 
         <div id="message_window">
             <div class="disconnected">
@@ -35,12 +37,8 @@
                       <img src='white.png' id = 'test'>
                       <!-- <script type="text/javascript" src="mb.js"></script> -->
 
-                      
-                      
-
                         <div class="message {{message.type}}">
-                          
-
+   
                           <script>
                           
                             // var counterFull = document.getElementById("counter").value;
@@ -90,9 +88,7 @@
                     <input type="text" autocomplete="off" id="messenger_input" placeholder="Type here..." />
                     <button id="button" type="submit" onclick="myFunction();">Send</button>
                     <script>
-                      function myFunction(){
-                        // document.getElementById('mb_ad').innerHTML = document.write("<img src='this.jpg' id = 'profile'>");
-                          };
+                      
                           // var counterFull = document.getElementById("counter").value;
                           // var counterLast = counterFull.charAt(counterFull.length-1);
                           // if (counterLast == 1){
