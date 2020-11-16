@@ -109,7 +109,7 @@ function timeOutAlarm(deadline){
     console.log("hour input: "+hourStr);
     console.log("minutes input: "+minuteStr);
     let convertToMinutes = (parseInt(hourStr)*60) + parseInt(minuteStr);
-    console.log("total minutes input: "+minuteStr);
+    console.log("total minutes input: "+convertToMinutes);
     let deadlineConvert = (convertToMinutes*60)*1000;
     console.log("deadlineConvert input: "+deadlineConvert);
   
@@ -203,7 +203,15 @@ controller.ready(() => {
         setTimeout(() => bot.reply(message, `it's ${message.text}`), timeOutAlarm(message.text))
         setTimeout(() => bot.reply(message, `time for ${ task} `), timeOutAlarm(message.text)+1000)
         setTimeout(() => bot.reply(message, `inform me when your done doing ${ task} `), (timeOutAlarm(message.text)+3000))
+        setTimeout(() => bot.reply(message, `what is your progress on ${ task}? `), (timeOutAlarm(message.text)+1500000))
+        setTimeout(() => bot.reply(message, `what is your progress on${ task}? `), (timeOutAlarm(message.text)+1500000))
        });
+    //
+
+    //for testing
+    controller.hears('trigger_check_progress',['message'], async(bot, message) => {
+        await bot.reply(message,`what is your progress on ${ task}? `);
+    });
     //
 
     /* catch-all that uses the CMS to trigger dialogs */
